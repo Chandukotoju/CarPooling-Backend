@@ -4,9 +4,10 @@ import User from "../model/model.user.js";
 export const addVehcle=async(req,res)=>{ 
     const {vehcleModel,noOfSeats,pricePerSeat,vehcleNumber}=req.body;  
     const ownerId=req.userId; 
-    
+    console.log(ownerId)
     try{
-        const user=await User.findById(ownerId); 
+        const user=await User.findById(ownerId);  
+        
         if(!user){
             return res.status(401).json({message:"unauthorized user"});
         }
@@ -17,7 +18,7 @@ export const addVehcle=async(req,res)=>{
         res.status(201).json({message:"vehcle registered successfully",newVehcle})
     }catch(error){
         console.log("Error :"+error);
-        res.status(500).json({message:"server error"});
+        res.status(500).json({message:"server error",error});
     }
 } 
 

@@ -19,11 +19,11 @@ export const signup= async(req,res)=>{
             password:hashedPassword,role
         });
         await createUser.save();
-        const token =jwt.sign({ userId: createUser._id,role:createUser.role }, process.env.JWT_SECRET, { expiresIn: "30d" });
-        res.status(201).json({message:"user created successfully",createUser,token}); 
+        // const token =jwt.sign({ userId: createUser._id,role:createUser.role }, process.env.JWT_SECRET, { expiresIn: "30d" });
+        res.status(201).json({message:"user created successfully",createUser}); 
     }catch(error){
         console.log("error :"+error);
-        res.status(500).json({message:"Internal server error"});
+        res.status(500).json({message:"Internal server error",error});
     };
 }; 
 
