@@ -24,11 +24,7 @@ try{
   }catch(error){
      console.log("Error:",error)
   }; 
-  app.use(cors({
-    origin: "https://car-pooling-app-git-main-chandus-projects-cdac10b0.vercel.app", // Your frontend URL
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true
-  }));
+  app.use(cors());
 
 app.use("/user",userRoute); 
 app.use("/vehicle",vehcleRoute);
