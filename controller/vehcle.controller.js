@@ -9,7 +9,7 @@ export const addVehcle=async(req,res)=>{
         const user=await User.findById(ownerId);  
         
         if(!user){
-            return res.status(401).json({message:"unauthorized user"});
+            return res.status(401).json({message:"unauthorized user",user,ownerId});
         }
         const newVehcle=new Vehicle({
             owner:ownerId,vehcleModel,noOfSeats,pricePerSeat,vehcleNumber
